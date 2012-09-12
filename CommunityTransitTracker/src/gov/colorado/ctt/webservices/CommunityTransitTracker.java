@@ -16,7 +16,11 @@ Copyright 2012 NIC Inc.
 package gov.colorado.ctt.webservices;
 
 import gov.colorado.ctt.model.Stop;
+
+import java.math.BigDecimal;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 import javax.ejb.Stateless;
 import javax.persistence.EntityManagerFactory;
@@ -25,6 +29,10 @@ import javax.persistence.TypedQuery;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
+
+import com.google.places.GooglePlaces;
+import com.google.places.Location;
 
 @Path("/")
 @Stateless
@@ -34,7 +42,59 @@ public class CommunityTransitTracker {
 	private EntityManagerFactory emf;
 	
 	@GET()
+	@Produces("text/plain")
+	@Path("/update")
+	public String update() {
+		List<Stop> stops = getStops();
+		for(Stop stop : stops) {
+			
+		}
+		return "update";
+	}
+	
+	@GET()
 	@Produces("application/json")
+	@Path("/places/search")
+	public Map placesSearch(
+			@QueryParam("location")String location,
+			@QueryParam("radius")Integer radius,
+			@QueryParam("rankby")String rankby,
+			@QueryParam("sensor")String sensor,
+			@QueryParam("keyword")String keyword,
+			@QueryParam("language")String language,
+			@QueryParam("name")String name,
+			@QueryParam("types")String types,
+			@QueryParam("pagetoken")String pagetoken) {
+		return GooglePlaces.getInstance().placeSearch(location, radius, rankby, sensor, keyword, language, name, types, pagetoken);
+	}
+	
+	@GET()
+	@Produces("application/json")
+	@Path("/places/add")
+	public Map placesAdd(
+			@QueryParam("sensor")String sensor,
+			@QueryParam("lat")BigDecimal lat,
+			@QueryParam("lng")BigDecimal lng,
+			@QueryParam("accuracy")BigDecimal accuracy,
+			@QueryParam("name")String name,
+			@QueryParam("type")String type,
+			@QueryParam("language")String language
+			) {
+		Map placeAddRequest = new HashMap();
+		Map location = new HashMap();
+		location.put("lat", lat);
+		location.put("lng", lng);
+		placeAddRequest.put("location", location);
+		placeAddRequest.put("accuracy", accuracy);
+		placeAddRequest.put("name", name);
+		placeAddRequest.put("types", new String[] {type});
+		placeAddRequest.put("language", language);
+		return GooglePlaces.getInstance().add(sensor, placeAddRequest);
+	}
+	
+	@GET()
+	@Produces("application/json")
+	@Path("/stops")
 	public List<Stop> getStops() {
 		TypedQuery<Stop> query = emf.createEntityManager()
 				.createQuery("select stop from Stop stop", Stop.class);

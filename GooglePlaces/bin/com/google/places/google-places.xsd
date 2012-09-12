@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright 2012 NIC Inc.
+  
+  Licensed under the Apache License, Version 2.0 (the "License");
+  you may not use this file except in compliance with the License.
+  You may obtain a copy of the License at
+  
+    http://www.apache.org/licenses/LICENSE-2.0
+  
+  Unless required by applicable law or agreed to in writing, software
+  distributed under the License is distributed on an "AS IS" BASIS,
+  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+  See the License for the specific language governing permissions and
+  limitations under the License.
+-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/google-places" xmlns:tns="http://www.example.org/google-places" elementFormDefault="qualified">
+
+
+    <complexType name="PlaceSearchResponse">
+    	<sequence>
+    		<element name="html_attributions" type="string" maxOccurs="unbounded" minOccurs="0"></element>
+    		<element name="status" type="string"></element>
+    		<element name="result" type="tns:Result"
+    			maxOccurs="unbounded" minOccurs="0">
+    		</element>
+    		<element name="next_page_token" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Result">
+    	<sequence>
+    		<element name="name" type="string"></element>
+    		<element name="type" type="string" maxOccurs="unbounded"
+    			minOccurs="1">
+    		</element>
+    		<element name="formatted_address" type="string"></element>
+    		<element name="geometry" type="tns:Geometry"></element>
+    		<element name="rating" type="string"></element>
+    		<element name="icon" type="string"></element>
+    		<element name="reference" type="string"></element>
+    		<element name="id" type="string"></element>
+    	</sequence>
+    </complexType>
+
+
+    <complexType name="Geometry">
+    	<sequence>
+    		<element name="location" type="tns:Location"></element>
+    	</sequence>
+    </complexType>
+
+    <complexType name="Location">
+    	<sequence>
+    		<element name="lat" type="string"></element>
+    		<element name="lng" type="string"></element>
+    	</sequence>
+    </complexType>
+
+    <element name="PlaceSearchResponse"
+    	type="tns:PlaceSearchResponse">
+    </element>
+</schema>

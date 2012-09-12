@@ -6,6 +6,9 @@
         <dependent-module archiveName="CommunityTransitTrackerModel.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/CommunityTransitTrackerModel/CommunityTransitTrackerModel">
             <dependency-type>uses</dependency-type>
         </dependent-module>
+        <dependent-module archiveName="GooglePlaces.jar" deploy-path="/WEB-INF/lib" handle="module:/resource/GooglePlaces/GooglePlaces">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
         <property name="context-root" value="CommunityTransitTracker"/>
         <property name="java-output-path" value="/CommunityTransitTracker/build/classes"/>
     </wb-module>
