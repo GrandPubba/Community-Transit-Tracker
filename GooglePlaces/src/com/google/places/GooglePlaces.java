@@ -17,8 +17,6 @@ package com.google.places;
 
 import java.util.Map;
 
-import javax.ws.rs.QueryParam;
-
 import org.jboss.resteasy.client.ProxyFactory;
 import org.jboss.resteasy.plugins.providers.RegisterBuiltin;
 import org.jboss.resteasy.spi.ResteasyProviderFactory;
@@ -42,6 +40,7 @@ public class GooglePlaces {
 		}
 		return _googlePlaces;
 	}
+	@SuppressWarnings("rawtypes")
 	public Map placeSearch(
 			String location,
 			Integer radius,
@@ -56,6 +55,7 @@ public class GooglePlaces {
 		return getGooglePlacesClient().search(GOOGLE_PLACES_API_KEY, location, radius, rankby, sensor, keyword, language, name, types, pagetoken);
 	}
 	
+	@SuppressWarnings("rawtypes")
 	public Map add(
 			String sensor,
 			Map placeAddRequest

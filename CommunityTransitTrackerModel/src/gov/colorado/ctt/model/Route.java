@@ -17,6 +17,7 @@ package gov.colorado.ctt.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
 
 
 /**
@@ -25,6 +26,7 @@ import javax.persistence.*;
  */
 @Entity
 @Table(name="routes")
+@XmlRootElement
 public class Route implements Serializable {
 	private static final long serialVersionUID = 1L;
 

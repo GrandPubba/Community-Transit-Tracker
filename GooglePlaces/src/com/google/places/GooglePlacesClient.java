@@ -26,6 +26,7 @@ import javax.ws.rs.QueryParam;
 
 public interface GooglePlacesClient {
 
+	@SuppressWarnings("rawtypes")
 	@GET()
 	@Path("/search/json")
 	@Produces("application/json")
@@ -42,6 +43,7 @@ public interface GooglePlacesClient {
 			@QueryParam("pagetoken")String pagetoken
 			);
 	
+	@SuppressWarnings("rawtypes")
 	@POST()
 	@Path("/add/json")
 	@Produces("application/json")

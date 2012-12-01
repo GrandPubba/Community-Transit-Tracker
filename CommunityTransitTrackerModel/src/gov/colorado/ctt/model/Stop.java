@@ -17,6 +17,8 @@ package gov.colorado.ctt.model;
 
 import java.io.Serializable;
 import javax.persistence.*;
+import javax.xml.bind.annotation.XmlRootElement;
+
 import java.math.BigDecimal;
 
 
@@ -26,6 +28,7 @@ import java.math.BigDecimal;
  */
 @Entity
 @Table(name="stops")
+@XmlRootElement
 public class Stop implements Serializable {
 	private static final long serialVersionUID = 1L;
 

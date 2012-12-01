@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>Community Transit Tracker</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1"> 
+		<link rel="stylesheet" href="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.css" />
+		<script src="http://code.jquery.com/jquery-1.7.1.min.js"></script>
+		<script src="http://code.jquery.com/mobile/1.1.1/jquery.mobile-1.1.1.min.js"></script>
+		<script src="./js/resteasy.js"></script>
+		<script src="./js/index.html.js"></script>
+	</head>
+	<body>
+		<div id="list_stops" data-role="page">
+			<div data-role="header">
+				<h1>Community Transit Tracker : List Stops</h1>
+			</div>
+			
+			<div data-role="content">
+			 <ul id="ul_stops" data-role="listview">
+			 	<li><a href="#stop_detail">Transit Stop #1</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #2</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #3</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #4</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #5</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #6</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #7</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #8</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #9</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #10</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #11</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #12</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #13</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #14</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #15</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #16</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #17</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #18</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #19</a></li>
+			 	<li><a href="#stop_detail">Transit Stop #20</a></li>
+			 </ul>
+			</div>
+		</div>
+		
+		<div id="select_route_for_stop" data-role="page">
+			<div data-role="header">
+				<h1>Select Route for Stop</h1>
+			</div>
+			
+			<div data-role="content">
+				<ul id="routes_ul" data-role="listview">
+					<li>Route #1</li>
+					<li>Route #2</li>
+					<li>Route #3</li>
+				</ul>	
+			</div>
+		</div>
+		
+		<div id="estimate_arrival" data-role="page">
+			<div data-role="header">
+				<h1>Estimate Arrival Time</h1>
+			</div>
+			
+			<div data-role="content">
+				<p>Estimated Time of Arrival is</p>
+				<div id="estimated_arrival_time">MM/dd/yyyy HH:mm:ss ZZZ</div>	
+			</div>
+		</div>
+	</body>
+</html>
