@@ -185,9 +185,9 @@ DROP TABLE IF EXISTS `shapes`;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `shapes` (
   `shape_id` varchar(64) NOT NULL,
-  `shape_pt_lat` decimal(8,6) NOT NULL,
-  `shape_pt_lon` decimal(8,6) NOT NULL,
-  `shape_pt_sequence` int(10) unsigned NOT NULL,
+  `shape_pt_lat` decimal(9,6) NOT NULL,
+  `shape_pt_lon` decimal(9,6) NOT NULL,
+  `shape_pt_sequence` int(12) unsigned NOT NULL,
   `shape_dist_traveled` decimal(5,2) unsigned DEFAULT NULL,
   PRIMARY KEY (`shape_id`,`shape_pt_lat`,`shape_pt_lon`,`shape_pt_sequence`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

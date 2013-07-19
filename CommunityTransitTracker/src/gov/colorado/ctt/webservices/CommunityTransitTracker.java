@@ -28,6 +28,7 @@ import java.util.Map;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
+import javax.persistence.Query;
 import javax.persistence.TypedQuery;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -159,19 +160,20 @@ public class CommunityTransitTracker {
 	@Consumes("application/json")
 	@Path("/routes/at")
 	public List<Route> getRoutesAt(Stop stop) {
-		TypedQuery<Route> query = emf.createEntityManager()
-				.createQuery(
-						"select \n" +
-								"\tdistinct(route) \n" +
-						"from \n" +
-							"\tRoute route, \n" +
-							"\tStop stop, \n" +
-							"\tStopTime stopTime, \n" +
-							"\tTrip trip\n " +
-						"where \n" +
-							"\tstopTime.id.stopId = :stopId and \n" +
-							"\tstopTime.id.tripId = trip.tripId and \n" +
-							"\ttrip.routeId = route.routeId", Route.class);
+		Query query = emf.createEntityManager()				
+				.createNativeQuery(
+						"select " +
+							"distinct routes.* " +
+						"from " +
+							"routes, " + 
+							"trips, " +
+							"stops, " +
+							"stop_times " + 
+						"where " +
+							"stops.stop_id = :stopId and " +
+							"stops.stop_id = stop_times.stop_id and " +
+							"stop_times.trip_id = trips.trip_id and " +
+							"trips.route_id = routes.route_id", Route.class);
 		query.setParameter("stopId", stop.getStopId());
 		return query.getResultList();
 	}
